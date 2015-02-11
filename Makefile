@@ -176,13 +176,8 @@ android-all: $(ANDROID_ABIS)
 
 ##### Render builds ############################################################
 
-.PRECIOUS: Makefile/render
-Makefile/render: bin/render.gyp config/$(HOST).gypi
-	deps/run_gyp bin/render.gyp $(CONFIG_$(HOST)) $(LIBS_$(HOST)) --generator-output=./build/$(HOST) -f make
-
-render: Makefile/render
+render: Makefile/mbgl
 	$(MAKE) -C build/$(HOST) BUILDTYPE=$(BUILDTYPE) mbgl-render
-
 
 ##### Maintenace operations ####################################################
 
